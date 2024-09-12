@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cat >> /var/log/echo.log
+cat >> /echolog/echo.log
