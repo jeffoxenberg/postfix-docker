@@ -45,6 +45,7 @@ function generate_configs() {
   chmod a+x /opt/kafka.py
   mkdir /echolog
   chown -R postfix:postfix /echolog
+  chmod 777 /echolog
 
   # create a file marking the configuration as completed for this domain
   echo "All configurations generated for ${PRIMARY_DOMAIN}"
