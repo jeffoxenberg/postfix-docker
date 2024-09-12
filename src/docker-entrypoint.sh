@@ -41,6 +41,8 @@ function generate_configs() {
 
   cp templates/echo.sh /opt/echo.sh
   cp templates/kafka.py /opt/kafka.py
+  chmod a+x /opt/echo.sh
+  chmod a+x /opt/kafka.py
 
   # create a file marking the configuration as completed for this domain
   echo "All configurations generated for ${PRIMARY_DOMAIN}"
