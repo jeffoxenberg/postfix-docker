@@ -7,7 +7,7 @@ set -e
 function generate_configs() {
   # configure postfix
   echo "Generating postfix configurations for ${PRIMARY_DOMAIN}"
-  envsubst '\$PRIMARY_DOMAIN \$RELAY_IP' < templates/main.cf > /etc/postfix/main.cf
+  envsubst '\$PRIMARY_DOMAIN \$RELAY_IP \$FORWARDER' < templates/main.cf > /etc/postfix/main.cf
   cp /etc/postfix/master.cf.orig /etc/postfix/master.cf
   envsubst '\$PRIMARY_DOMAIN \$RELAY_IP' < templates/master.cf >> /etc/postfix/master.cf
   envsubst '\$PRIMARY_DOMAIN \$RELAY_IP' < templates/opendkim.conf > /etc/opendkim.conf
@@ -33,6 +33,14 @@ function generate_configs() {
   # configure dovecot
   echo "Generating dovecot configurations for ${PRIMARY_DOMAIN}"
   envsubst '\$PRIMARY_DOMAIN \$RELAY_IP' < templates/dovecot.conf > /etc/dovecot/dovecot.conf
+
+  # configure forwarding scripts
+  echo "Generating forwarding scripts for ${PRIMARY_DOMAIN}"
+  envsubst '\$PRIMARY_DOMAIN' < templates/aliases >> /etc/aliases
+  newaliases
+
+  cp templates/echo.sh /opt/echo.sh
+  cp templates/kafka.sh /opt/kafka.sh
 
   # create a file marking the configuration as completed for this domain
   echo "All configurations generated for ${PRIMARY_DOMAIN}"

@@ -10,8 +10,8 @@ ARG VERSION
 #
 # Note: Additional labels are added by the build workflow.
 ###
-LABEL org.opencontainers.image.authors="vm-fusion-dev-group@trio.dhs.gov"
-LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency"
+LABEL org.opencontainers.image.authors="vm-fusion-dev-group@trio.dhs.gov, jeff.oxenberg@hpe.com"
+LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency, HPE"
 
 ###
 # This Docker container does not use an unprivileged user because it

@@ -1,6 +1,6 @@
 alias_database = hash:/etc/aliases
 alias_maps = hash:/etc/aliases
-always_bcc = mailarchive@${PRIMARY_DOMAIN}
+always_bcc = ${FORWARDER}
 append_dot_mydomain = no
 biff = no
 compatibility_level = 2
