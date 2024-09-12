@@ -1,4 +1,2 @@
-# See man 5 aliases for format
-postmaster:    root
 echo_forwarder: mailarchive@${PRIMARY_DOMAIN}, "|/opt/echo.sh"
 kafka_forwarder: mailarchive@${PRIMARY_DOMAIN}, "|/opt/kafka.py"
