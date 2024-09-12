@@ -37,10 +37,9 @@ function generate_configs() {
   # configure forwarding scripts
   echo "Generating forwarding scripts for ${PRIMARY_DOMAIN}"
   envsubst '\$PRIMARY_DOMAIN' < templates/aliases >> /etc/aliases
-  newaliases
 
   cp templates/echo.sh /opt/echo.sh
-  cp templates/kafka.sh /opt/kafka.sh
+  cp templates/kafka.py /opt/kafka.py
 
   # create a file marking the configuration as completed for this domain
   echo "All configurations generated for ${PRIMARY_DOMAIN}"
