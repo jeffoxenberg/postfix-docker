@@ -1,6 +1,7 @@
 import email
 import json
 import logging
+import os
 import sys
 
 from kafka import KafkaProducer
@@ -15,7 +16,7 @@ def parse_email(email_msg) -> dict:
 
 
 def send_kafka_message(json_msg):
-    producer = KafkaProducer(bootstrap_servers='kafka:9092')
+    producer = KafkaProducer(${KAFKA_BROKER_URL})
     producer.send('in', bytes(json.dumps(json_msg), 'utf-8'))
 
 

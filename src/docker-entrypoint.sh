@@ -40,7 +40,8 @@ function generate_configs() {
   newaliases
 
   cp templates/echo_forwarder.sh /opt/echo_forwarder.sh
-  cp templates/kafka_forwarder.py /opt/kafka_forwarder.py
+  envsubst '\$KAFKA_BROKER_URL' < templates/kafka_forwarder.py >> /opt/kafka_forwarder.py
+  
   chmod a+x /opt/echo_forwarder.sh
   chmod a+x /opt/kafka_forwarder.py
   mkdir /echolog
