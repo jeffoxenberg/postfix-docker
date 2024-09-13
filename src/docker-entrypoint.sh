@@ -41,7 +41,7 @@ function generate_configs() {
 
   cp templates/echo_forwarder.sh /opt/echo_forwarder.sh
   envsubst '\$KAFKA_BROKER_URL' < templates/kafka_forwarder.py >> /opt/kafka_forwarder.py
-  
+
   chmod a+x /opt/echo_forwarder.sh
   chmod a+x /opt/kafka_forwarder.py
   mkdir /echolog

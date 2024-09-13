@@ -16,7 +16,7 @@ def parse_email(email_msg) -> dict:
 
 
 def send_kafka_message(json_msg):
-    producer = KafkaProducer(${KAFKA_BROKER_URL})
+    producer = KafkaProducer('${KAFKA_BROKER_URL}')
     producer.send('in', bytes(json.dumps(json_msg), 'utf-8'))
 
 
