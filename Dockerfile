@@ -40,7 +40,9 @@ ENV DEPS \
     opendmarc \
     postfix \
     procmail \
-    sasl2-bin
+    sasl2-bin \
+    vim \
+    python3-pip
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install --quiet --quiet --yes \
     --no-install-recommends --no-install-suggests \
@@ -68,6 +70,9 @@ RUN mv /etc/postfix/master.cf /etc/postfix/master.cf.orig
 
 COPY src/templates templates/
 COPY src/docker-entrypoint.sh src/version.txt ./
+
+# Install python deps
+RUN pip install -r templates/requirements.txt
 
 ###
 # Prepare to run
