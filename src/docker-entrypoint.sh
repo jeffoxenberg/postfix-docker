@@ -7,7 +7,7 @@ set -e
 function generate_configs() {
   # configure postfix
   echo "Generating postfix configurations for ${PRIMARY_DOMAIN}"
-  envsubst '\$PRIMARY_DOMAIN \$RELAY_IP \$FORWARDER' < templates/main.cf > /etc/postfix/main.cf
+  envsubst '\$PRIMARY_DOMAIN \$RELAY_IP \$FORWARDER \$ADTL_ADDR' < templates/main.cf > /etc/postfix/main.cf
   cp /etc/postfix/master.cf.orig /etc/postfix/master.cf
   envsubst '\$PRIMARY_DOMAIN \$RELAY_IP' < templates/master.cf >> /etc/postfix/master.cf
   envsubst '\$PRIMARY_DOMAIN \$RELAY_IP' < templates/opendkim.conf > /etc/opendkim.conf
