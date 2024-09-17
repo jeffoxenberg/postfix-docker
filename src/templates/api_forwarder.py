@@ -35,6 +35,7 @@ if __name__ == '__main__':
     parsed_email = parse_email(email_msg)
     logging.info(f'Parsed email: {parsed_email}')
     try:
-        requests.post('${DLP_API_URL}/api/v1/inference/email', json=json.dumps(parsed_email))
+        resp = requests.post('${DLP_API_URL}/api/v1/inference/email', json=json.dumps(parsed_email))
+        logging.info(f'{resp.status_code}: {resp.content}')
     except Exception as e:
         logging.error(e)
